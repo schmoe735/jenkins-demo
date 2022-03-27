@@ -13,17 +13,9 @@ pipeline {
                       }
                   }
             }
-            stage('Deploy to staging') {
+            stage('Create Tomcat Docker Image') {
                 steps {
-                    build job: 'DeployApplicationStagingEnv'
-                }
-            }
-            stage('Deploy to Production') {
-                steps {
-                    timeout(time:5, unit: 'DAYS'){
-                        input message: 'Approve PRODUCTION Deployment'
-                    }
-                    build job: 'DeployApplicationProductionEnv'
+                    sh 'docker build . -t tomcatsamplewebapp:${env.BUILD_ID}'
                 }
             }
       }
