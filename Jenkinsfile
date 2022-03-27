@@ -1,6 +1,11 @@
 pipeline {
       agent any
       stages {
+            stage('Initialize')
+            {
+              def dockerHome = tool 'MyDocker'
+              env.PATH = "${dockerHome}/bin:${env.PATH}"
+            }
             stage('Build Application') {
                   steps {
                         sh 'mvn clean package'
