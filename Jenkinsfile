@@ -1,6 +1,7 @@
 pipeline {
       agent any
       stages {
+
             stage('Build Application') {
                   steps {
                         sh 'mvn clean package'
@@ -17,7 +18,7 @@ pipeline {
                 steps {
                     sh "pwd"
                     sh "ls -la"
-                    sh "env"
+                    sh "docker build . -t tomcatsamplewebapp:${env.BUILD_ID}"
                 }
             }
       }
