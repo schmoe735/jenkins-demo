@@ -1,30 +1,16 @@
 pipeline {
       agent any
       stages {
-            stage('Init') {
+            stage('Build Application') {
                   steps {
-                        echo 'Hi, this is YPC from Githhub'
-                        echo 'We are Starting the Testing'
+                        sh 'mvn clean package'
                   }
-            }
-            stage('Build') {
-                  steps {
-                        echo 'Building Sample Maven Project'
-                  }
-            }
-            stage('Deploy') {
-                  steps {
-                        echo "Deploying in Staging Area"
-                  }
-            }
-            stage('Deploy Production') {
-                  steps {
-                        echo "Deploying in Production Area"
-                  }
-            }
-            stage('Deploy Prod 2') {
-                  steps {
-                        echo "Deploying in Production Area 2"
+                  post {
+                      success {
+                          echo "Now archiving Artifacts..."
+                          archiveArtifacts artifacts: '**/*.war'
+
+                      }
                   }
             }
       }
