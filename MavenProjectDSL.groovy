@@ -11,6 +11,6 @@ job('Jenkins-Demo-Via-DSL') {
     }
     publishers {
         //archive the war file generated
-        archiveArtifacts '**/*.jar'
+        archiveArtifacts '**/*.war'
     }
 }
