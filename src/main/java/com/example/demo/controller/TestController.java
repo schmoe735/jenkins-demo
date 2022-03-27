@@ -11,7 +11,4 @@ public class TestController {
     public String test(){
         return "Welcome to Jenkins on Staging with pipeline";
     }
-    public String test(){
-        return "Welcome to Jenkins on Staging with pipeline";
-    }
 }
