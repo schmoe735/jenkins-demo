@@ -17,7 +17,7 @@ pipeline {
                 steps {
                     sh "pwd"
                     sh "ls -la"
-                    sh "echo 'hELLO'"
+                    sh "echo ${env.PATH}"
                 }
             }
       }
