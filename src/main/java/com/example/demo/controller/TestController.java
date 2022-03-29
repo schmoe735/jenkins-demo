@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
     @GetMapping
     public String test(){
-        return "Welcome to Jenkins on Staging with pipeline";
+        return "Welcome to Docker";
     }
 }
